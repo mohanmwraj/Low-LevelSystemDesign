@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExternalDispatcher {
+
+    List<ElevatorController> elevatorControllerList = new ArrayList<>();
+    public void submitExternalRequest(int floor, Direction direction){
+
+        for(ElevatorController elevatorController: elevatorControllerList){
+            int elevatorID = elevatorController.elevatorCar.id;
+            if(elevatorID % 2 == 1 && floor % 2 == 1){
+                elevatorController.submitExternalRequest(floor, direction);
+            } else if(elevatorID % 2 == 0 && floor % 2 == 0){
+                elevatorController.submitExternalRequest(floor, direction);
+            }
+        }
+    }
+}
